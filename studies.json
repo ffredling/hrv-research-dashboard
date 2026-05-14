@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-05-14T22:11:11.789Z",
+  "lastUpdated": "2026-05-14T22:12:23.152Z",
   "studies": [
     {
       "id": "35853460",
@@ -46,7 +46,7 @@
       "title": "Heart Rate Variability-Guided Training for Enhancing Cardiac-Vagal Modulation, Aerobic Fitness, and Endurance Performance: A Methodological Systematic Review with Meta-Analysis",
       "authors": "Manresa-Rocamora et al.",
       "year": "2021",
-      "status": "pending",
+      "status": "waitlisted",
       "pitch": "The most rigorous head-to-head comparison of HRV-guided versus traditional predefined training. Found HRV-guided training significantly outperforms for improving vagal HRV indices, with small but consistent advantages for VO2max and endurance performance. Crucially identifies which methodological variables drive stronger results, helping evaluate what any given wearable is actually doing.",
       "quality": "Systematic review with meta-analysis, open access. Three databases searched to Oct 2020, random-effects models, heterogeneity evaluation, and methodological quality scoring.",
       "pubmedUrl": "https://pubmed.ncbi.nlm.nih.gov/34639599/"
