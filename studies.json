@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-05-14T21:09:32.866Z",
+  "lastUpdated": "2026-05-14T21:10:18.425Z",
   "studies": [
     {
       "id": "35853460",
@@ -16,7 +16,7 @@
       "title": "Monitoring Athletic Training Status Through Autonomic Heart Rate Regulation: A Systematic Review and Meta-Analysis",
       "authors": "Bellenger et al.",
       "year": "2016",
-      "status": "pending",
+      "status": "approved",
       "pitch": "Directly answers whether a given HRV reading signals good adaptation or the start of overreaching. Pooled 27 studies and quantified how RMSSD changes in response to both positive training adaptation and overreaching. The critical finding Ã¢ÂÂ post-exercise HRV can rise in both scenarios Ã¢ÂÂ is something every athlete reading a wearable needs to understand before drawing conclusions.",
       "quality": "Systematic review and meta-analysis in Sports Medicine. 27 studies included, six-database search, standardized effect size reporting. One of the most cited papers in HRV monitoring literature.",
       "pubmedUrl": "https://pubmed.ncbi.nlm.nih.gov/26888648/"
