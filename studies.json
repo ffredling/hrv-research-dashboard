@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-05-14T22:15:14.937Z",
+  "lastUpdated": "2026-05-14T22:16:17.350Z",
   "studies": [
     {
       "id": "35853460",
@@ -86,7 +86,7 @@
       "title": "The Impact of Functional Overreaching on Post-Exercise Parasympathetic Reactivation in Runners",
       "authors": "Bellenger et al.",
       "year": "2021",
-      "status": "pending",
+      "status": "approved",
       "pitch": "Surfaces a counterintuitive pattern that is critical to understand: when runners are functionally overreached, their post-exercise RMSSD increases rather than decreases Ã¢ÂÂ the same direction as positive adaptation. Without knowing this, a paradoxical RMSSD rise could be misread as a green light for more training when it's actually a warning. Shows why HRV data alone is insufficient without a subjective readiness layer.",
       "quality": "Open access in Frontiers in Physiology. 11 male runners across a controlled light Ã¢ÂÂ heavy Ã¢ÂÂ taper cycle with performance testing at each stage. Same research group as the 2016 meta-analysis.",
       "pubmedUrl": "https://pubmed.ncbi.nlm.nih.gov/33488402/"
