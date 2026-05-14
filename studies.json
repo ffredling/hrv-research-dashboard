@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-05-14T22:16:17.350Z",
+  "lastUpdated": "2026-05-14T22:17:32.928Z",
   "studies": [
     {
       "id": "35853460",
@@ -96,7 +96,7 @@
       "title": "Individually Guided Training Prescription by Heart Rate Variability and Self-Reported Measure of Stress Tolerance in Recreational Runners: Effects on Endurance Performance",
       "authors": "Figueiredo et al.",
       "year": "2023",
-      "status": "pending",
+      "status": "approved",
       "pitch": "The most recent RCT in this set, comparing HRV-guided training, subjective stress monitoring, and predefined training head-to-head. The HRV group outperformed both others on 5km time trial and peak velocity. Validates using Garmin HRV data while also showing that subjective fatigue ratings capture real physiological signal Ã¢ÂÂ both are worth tracking together.",
       "quality": "RCT in Journal of Sports Sciences. 36 recreational male runners across three groups, 5-week intervention with pre/post performance testing.",
       "pubmedUrl": "https://pubmed.ncbi.nlm.nih.gov/36940300/"
