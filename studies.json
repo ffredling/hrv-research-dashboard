@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-05-14T21:10:18.425Z",
+  "lastUpdated": "2026-05-14T21:10:47.402Z",
   "studies": [
     {
       "id": "35853460",
@@ -26,7 +26,7 @@
       "title": "Training Adaptation and Heart Rate Variability in Elite Endurance Athletes: Opening the Door to Effective Monitoring",
       "authors": "Plews et al.",
       "year": "2013",
-      "status": "pending",
+      "status": "approved",
       "pitch": "The foundational paper that introduced daily HRV monitoring with rolling averages Ã¢ÂÂ the methodology now baked into HRV4Training and approximated by Garmin. Explains why a single reading is unreliable, why 7-day rolling averages matter, and how to distinguish fitness gain signals from freshness loss signals. Essential for understanding what your Garmin's HRV trend line is actually representing.",
       "quality": "Review in Sports Medicine by Plews and Buchheit, two of the most cited names in applied HRV research. Includes Olympic and World Champion case studies. Cited hundreds of times, considered foundational in the field.",
       "pubmedUrl": "https://pubmed.ncbi.nlm.nih.gov/23852425/"
