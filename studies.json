@@ -1,12 +1,12 @@
 {
-  "lastUpdated": "2026-05-14T21:05:19.403Z",
+  "lastUpdated": "2026-05-14T21:05:45.840Z",
   "studies": [
     {
       "id": "35853460",
       "title": "Practices and Applications of Heart Rate Variability Monitoring in Endurance Athletes",
       "authors": "Lundstrom et al.",
       "year": "2022",
-      "status": "waitlisted",
+      "status": "pending",
       "pitch": "A comprehensive field manual for endurance athletes using HRV â covering what measurement conditions matter, how lifestyle factors like sleep and alcohol affect readings, and how to identify overtraining signals. Addresses how age affects HRV baselines, directly relevant to interpreting Garmin data over time. The most practical orientation paper available for an amateur athlete building an HRV knowledge base.",
       "quality": "Narrative review in International Journal of Sports Medicine by three University of Minnesota kinesiology researchers. Synthesizes recent literature with explicit practical application focus.",
       "pubmedUrl": "https://pubmed.ncbi.nlm.nih.gov/35853460/"
