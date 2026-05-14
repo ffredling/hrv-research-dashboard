@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-05-14T21:11:29.763Z",
+  "lastUpdated": "2026-05-14T22:11:11.789Z",
   "studies": [
     {
       "id": "35853460",
@@ -36,7 +36,7 @@
       "title": "Heart Rate Variability in Athletes",
       "authors": "Aubert et al.",
       "year": "2003",
-      "status": "pending",
+      "status": "approved",
       "pitch": "The bedrock physiology paper Ã¢ÂÂ explains what HRV actually is before you can intelligently interpret your numbers. Covers how sympathetic and parasympathetic branches of the autonomic nervous system drive HRV, what RMSSD, SDNN, LF and HF power actually measure, and how training status affects each metric. Without this framework you're reading numbers without a model.",
       "quality": "Landmark 30-page review in Sports Medicine. One of the most referenced HRV papers in sports science. The methodology section is essential reading for anyone relying on wearable HRV data.",
       "pubmedUrl": "https://pubmed.ncbi.nlm.nih.gov/12974657/"
