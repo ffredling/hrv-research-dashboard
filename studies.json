@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-05-14T21:10:47.402Z",
+  "lastUpdated": "2026-05-14T21:11:29.763Z",
   "studies": [
     {
       "id": "35853460",
@@ -76,7 +76,7 @@
       "title": "Influence of a 100-Mile Ultramarathon on Heart Rate and Heart Rate Variability",
       "authors": "Paech et al.",
       "year": "2021",
-      "status": "pending",
+      "status": "waitlisted",
       "pitch": "Used 24-hour Holter ECG monitoring in 28 runners completing a 100-mile race and found HRV was still depressed one full week after finishing. Directly informs how to read Garmin data after a long ultra: suppressed HRV in the days following is an expected physiological response, not a warning sign, and it takes longer to resolve than most athletes assume.",
       "quality": "Open access prospective study in BMJ Open Sport & Exercise Medicine. Gold-standard 24-hour Holter monitoring at three time points: before, immediately after, and one week post-race. 28 runners including non-finishers.",
       "pubmedUrl": "https://pubmed.ncbi.nlm.nih.gov/34046186/"
