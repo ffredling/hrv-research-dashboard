@@ -1,5 +1,5 @@
 {
-  "lastUpdated": "2026-05-14T22:12:23.152Z",
+  "lastUpdated": "2026-05-14T22:15:02.610Z",
   "studies": [
     {
       "id": "35853460",
@@ -56,7 +56,7 @@
       "title": "Individual Endurance Training Prescription with Heart Rate Variability",
       "authors": "Vesterinen et al.",
       "year": "2016",
-      "status": "pending",
+      "status": "approved",
       "pitch": "One of the cleanest real-world tests of using daily resting HRV to decide when to do hard sessions. 40 recreational endurance runners randomized: the HRV group only did high-intensity sessions when their morning reading was in the green zone, ending up doing fewer hard sessions than controls but improving 3000m performance more. Direct proof-of-concept for HRV-guided training.",
       "quality": "RCT in Medicine & Science in Sports & Exercise. 40 participants, 12-week design with controlled preparation period. Population of recreational endurance runners makes it directly applicable.",
       "pubmedUrl": "https://pubmed.ncbi.nlm.nih.gov/26909534/"
