@@ -5,7 +5,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
-<title>HRV Research</title>
+<meta name="apple-mobile-web-app-title" content="Research">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<title>Research Dashboard</title>
 <style>
 * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
 body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #f2f2f7; color: #1c1c1e; min-height: 100vh; }
@@ -29,10 +31,11 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; b
 .header { background: white; padding: 12px 16px 0; position: sticky; top: 0; z-index: 100; border-bottom: 1px solid #e5e5ea; }
 .header-top { display: flex; align-items: center; justify-content: space-between; padding-bottom: 10px; }
 .header-title { font-size: 20px; font-weight: 700; letter-spacing: -0.3px; }
-.header-stats { display: flex; gap: 6px; align-items: center; }
+.header-stats { display: flex; gap: 6px; align-items: center; flex-wrap: wrap; justify-content: flex-end; }
 .chip { font-size: 12px; font-weight: 500; padding: 4px 10px; border-radius: 20px; }
 .chip-pending { background: #f2f2f7; color: #6e6e73; }
 .chip-approved { background: #d4edda; color: #1a7a1a; }
+.chip-waitlisted { background: #fff3cd; color: #856404; }
 .chip-declined { background: #fde8e8; color: #c00; }
 
 /* Filter tabs */
@@ -46,6 +49,7 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; b
 
 .card { background: white; border-radius: 14px; overflow: hidden; border: 1px solid #e5e5ea; }
 .card.approved { border-left: 4px solid #34c759; }
+.card.waitlisted { border-left: 4px solid #ff9500; }
 .card.declined { opacity: 0.55; }
 
 .card-header { padding: 14px 16px 12px; cursor: pointer; user-select: none; }
@@ -55,6 +59,7 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; b
 .card-badge { font-size: 11px; font-weight: 500; padding: 2px 8px; border-radius: 20px; }
 .badge-pending { background: #f2f2f7; color: #6e6e73; }
 .badge-approved { background: #d4edda; color: #1a7a1a; }
+.badge-waitlisted { background: #fff3cd; color: #856404; }
 .badge-declined { background: #fde8e8; color: #c00; }
 .card-chevron { margin-left: auto; color: #c7c7cc; font-size: 20px; transition: transform 0.2s ease; line-height: 1; }
 .card.open .card-chevron { transform: rotate(90deg); }
@@ -72,10 +77,11 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; b
 .pubmed-link { display: inline-flex; align-items: center; gap: 4px; margin-top: 12px; font-size: 13px; color: #007aff; text-decoration: none; font-weight: 500; }
 
 /* Actions */
-.card-actions { display: flex; gap: 8px; padding: 10px 14px 14px; }
-.action-btn { flex: 1; padding: 11px 8px; border-radius: 10px; font-size: 14px; font-weight: 600; border: none; cursor: pointer; transition: transform 0.1s, opacity 0.1s; }
+.card-actions { display: flex; gap: 8px; padding: 10px 14px 14px; flex-wrap: wrap; }
+.action-btn { flex: 1; min-width: 70px; padding: 11px 8px; border-radius: 10px; font-size: 14px; font-weight: 600; border: none; cursor: pointer; transition: transform 0.1s, opacity 0.1s; }
 .action-btn:active { transform: scale(0.97); opacity: 0.85; }
 .btn-approve { background: #d4edda; color: #1a7a1a; }
+.btn-waitlist { background: #fff3cd; color: #856404; }
 .btn-decline { background: #f2f2f7; color: #6e6e73; }
 .btn-undo { background: #f2f2f7; color: #6e6e73; font-size: 13px; }
 .action-btn:disabled { opacity: 0.4; pointer-events: none; }
@@ -99,7 +105,6 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; b
   .card-num, .chip-pending, .card-badge.badge-pending { background: #2c2c2e; }
   .card-details { border-color: #2c2c2e; }
   .detail-text { color: #ebebf5; }
-  .btn-decline, .btn-undo, .btn-primary { }
   .btn-decline, .btn-undo { background: #2c2c2e; color: #aeaeb2; }
   .filter-btn { color: #8e8e93; }
   .filter-btn.active { color: #0a84ff; border-bottom-color: #0a84ff; }
@@ -109,9 +114,12 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; b
   .setup input { background: #2c2c2e; border-color: #3a3a3c; color: #fff; }
   .setup-link { color: #0a84ff; }
   .btn-approve { background: #1a3d1a; color: #4cd964; }
+  .btn-waitlist { background: #3d2e00; color: #ffd60a; }
   .btn-decline { background: #2c2c2e; color: #8e8e93; }
   .chip-approved { background: #1a3d1a; color: #4cd964; }
+  .chip-waitlisted { background: #3d2e00; color: #ffd60a; }
   .chip-declined { background: #3d1a1a; color: #ff6b6b; }
+  .badge-waitlisted { background: #3d2e00; color: #ffd60a; }
 }
 
 .hidden { display: none !important; }
@@ -122,13 +130,13 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; b
 <!-- First-run setup -->
 <div id="setup-screen" class="setup hidden">
   <div class="setup-card">
-    <div style="text-align:center;font-size:36px">🫀</div>
-    <h1>HRV Research</h1>
+    <div style="text-align:center;font-size:36px">🔬</div>
+    <h1>Research Dashboard</h1>
     <p>Enter a GitHub Personal Access Token to load your study queue. Your token is stored only on this device.</p>
     <input type="password" id="token-input" placeholder="ghp_xxxxxxxxxxxx" autocomplete="off" spellcheck="false">
     <button class="btn-primary" onclick="saveToken()">Connect</button>
     <a class="setup-link" href="https://github.com/settings/personal-access-tokens/new" target="_blank">Create a token on GitHub →</a>
-    <p class="setup-note">Needs "Contents: Read & write" permission on the hrv-research-dashboard repo</p>
+    <p class="setup-note">Needs "Contents: Read & write" permission on the research-dashboard repo</p>
   </div>
 </div>
 
@@ -140,12 +148,14 @@ body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; b
       <div class="header-stats">
         <span class="chip chip-pending" id="stat-pending">—</span>
         <span class="chip chip-approved" id="stat-approved">—</span>
+        <span class="chip chip-waitlisted" id="stat-waitlisted">—</span>
       </div>
     </div>
     <div class="filters">
       <button class="filter-btn active" onclick="setFilter('all',this)">All</button>
       <button class="filter-btn" onclick="setFilter('pending',this)">Pending</button>
       <button class="filter-btn" onclick="setFilter('approved',this)">Approved</button>
+      <button class="filter-btn" onclick="setFilter('waitlisted',this)">Waitlist</button>
       <button class="filter-btn" onclick="setFilter('declined',this)">Declined</button>
     </div>
   </div>
@@ -202,6 +212,7 @@ async function decide(id, status) {
   const idx = studies.findIndex(s => s.id === id);
   if (idx === -1) return;
   document.querySelectorAll(`[data-id="${id}"]`).forEach(b => b.disabled = true);
+  const prev = studies[idx].status;
   studies[idx].status = status;
   showToast('Saving...');
   try {
@@ -210,14 +221,17 @@ async function decide(id, status) {
     const res = await fetch(`https://api.github.com/repos/${REPO}/contents/${FILE}`, {
       method: 'PUT',
       headers: { Authorization: `token ${getToken()}`, 'Content-Type': 'application/json' },
-      body: JSON.stringify({ message: `${status === 'approved' ? 'Approve' : status === 'declined' ? 'Decline' : 'Update'} PMID ${id}`, content, sha })
+      body: JSON.stringify({
+        message: `${status === 'approved' ? 'Approve' : status === 'declined' ? 'Decline' : status === 'waitlisted' ? 'Waitlist' : 'Update'} PMID ${id}`,
+        content, sha
+      })
     });
     if (!res.ok) throw new Error(`HTTP ${res.status}`);
     const saved = await res.json();
     sha = saved.content.sha;
-    showToast('Saved');
+    showToast('Saved ✓');
   } catch(e) {
-    studies[idx].status = status === 'pending' ? 'pending' : 'pending';
+    studies[idx].status = prev;
     showToast('Error — try again');
   }
   render();
@@ -231,11 +245,17 @@ function setFilter(f, btn) {
 }
 
 function render() {
-  const pending = studies.filter(s => s.status === 'pending').length;
-  const approved = studies.filter(s => s.status === 'approved').length;
-  const declined = studies.filter(s => s.status === 'declined').length;
-  document.getElementById('stat-pending').textContent = pending + ' pending';
-  document.getElementById('stat-approved').textContent = approved + ' approved';
+  const pending    = studies.filter(s => s.status === 'pending').length;
+  const approved   = studies.filter(s => s.status === 'approved').length;
+  const waitlisted = studies.filter(s => s.status === 'waitlisted').length;
+  const declined   = studies.filter(s => s.status === 'declined').length;
+
+  document.getElementById('stat-pending').textContent    = pending + ' pending';
+  document.getElementById('stat-approved').textContent   = approved + ' approved';
+  document.getElementById('stat-waitlisted').textContent = waitlisted + ' waitlisted';
+
+  // Hide zero-count chips to keep header clean
+  document.getElementById('stat-waitlisted').style.display = waitlisted > 0 ? '' : 'none';
 
   const visible = filter === 'all' ? studies : studies.filter(s => s.status === filter);
   const container = document.getElementById('cards-container');
@@ -247,7 +267,16 @@ function render() {
 
   container.innerHTML = visible.map(s => {
     const num = studies.indexOf(s) + 1;
-    const badgeClass = s.status === 'approved' ? 'badge-approved' : s.status === 'declined' ? 'badge-declined' : 'badge-pending';
+    const badgeClass = s.status === 'approved' ? 'badge-approved'
+                     : s.status === 'declined'  ? 'badge-declined'
+                     : s.status === 'waitlisted' ? 'badge-waitlisted'
+                     : 'badge-pending';
+    const actions = s.status === 'pending'
+      ? `<button class="action-btn btn-approve"   data-id="${s.id}" onclick="decide('${s.id}','approved')">Approve</button>
+         <button class="action-btn btn-waitlist"  data-id="${s.id}" onclick="decide('${s.id}','waitlisted')">Waitlist</button>
+         <button class="action-btn btn-decline"   data-id="${s.id}" onclick="decide('${s.id}','declined')">Decline</button>`
+      : `<button class="action-btn btn-undo" data-id="${s.id}" onclick="decide('${s.id}','pending')">↩ Undo</button>`;
+
     return `
 <div class="card ${s.status}" id="card-${s.id}">
   <div class="card-header" onclick="toggle('${s.id}')">
@@ -271,13 +300,7 @@ function render() {
     </div>
     <a href="${s.pubmedUrl}" target="_blank" class="pubmed-link">Open on PubMed →</a>
   </div>
-  <div class="card-actions">
-    ${s.status === 'pending'
-      ? `<button class="action-btn btn-approve" data-id="${s.id}" onclick="decide('${s.id}','approved')">Approve</button>
-         <button class="action-btn btn-decline" data-id="${s.id}" onclick="decide('${s.id}','declined')">Decline</button>`
-      : `<button class="action-btn btn-undo" data-id="${s.id}" onclick="decide('${s.id}','pending')">Undo</button>`
-    }
-  </div>
+  <div class="card-actions">${actions}</div>
 </div>`;
   }).join('');
 }
