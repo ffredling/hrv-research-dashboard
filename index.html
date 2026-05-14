@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<title>HRV Research</title>
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
+body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #f2f2f7; color: #1c1c1e; min-height: 100vh; }
+
+/* Setup */
+.setup { display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 100vh; padding: 2rem 1.5rem; gap: 1rem; background: #f2f2f7; }
+.setup-card { background: white; border-radius: 16px; padding: 2rem 1.5rem; width: 100%; max-width: 380px; display: flex; flex-direction: column; gap: 1rem; }
+.setup h1 { font-size: 22px; font-weight: 600; text-align: center; }
+.setup p { font-size: 14px; color: #6e6e73; line-height: 1.5; text-align: center; }
+.setup input { width: 100%; padding: 14px 16px; border: 1px solid #e5e5ea; border-radius: 12px; font-size: 15px; font-family: 'SF Mono', monospace; outline: none; background: #f9f9f9; color: #1c1c1e; }
+.setup input:focus { border-color: #007aff; background: white; }
+.btn-primary { width: 100%; padding: 14px; background: #007aff; color: white; border: none; border-radius: 12px; font-size: 16px; font-weight: 600; cursor: pointer; }
+.btn-primary:active { background: #0062cc; }
+.setup-link { font-size: 13px; color: #007aff; text-decoration: none; text-align: center; display: block; }
+.setup-note { font-size: 12px; color: #aeaeb2; text-align: center; }
+
+/* App layout */
+#app { display: flex; flex-direction: column; min-height: 100vh; }
+
+/* Header */
+.header { background: white; padding: 12px 16px 0; position: sticky; top: 0; z-index: 100; border-bottom: 1px solid #e5e5ea; }
+.header-top { display: flex; align-items: center; justify-content: space-between; padding-bottom: 10px; }
+.header-title { font-size: 20px; font-weight: 700; letter-spacing: -0.3px; }
+.header-stats { display: flex; gap: 6px; align-items: center; }
+.chip { font-size: 12px; font-weight: 500; padding: 4px 10px; border-radius: 20px; }
+.chip-pending { background: #f2f2f7; color: #6e6e73; }
+.chip-approved { background: #d4edda; color: #1a7a1a; }
+.chip-declined { background: #fde8e8; color: #c00; }
+
+/* Filter tabs */
+.filters { display: flex; overflow-x: auto; scrollbar-width: none; gap: 4px; padding-bottom: 1px; }
+.filters::-webkit-scrollbar { display: none; }
+.filter-btn { padding: 10px 14px; border: none; background: none; font-size: 14px; font-weight: 500; color: #6e6e73; cursor: pointer; white-space: nowrap; border-bottom: 2px solid transparent; flex-shrink: 0; }
+.filter-btn.active { color: #007aff; border-bottom-color: #007aff; }
+
+/* Cards */
+.cards { padding: 12px; display: flex; flex-direction: column; gap: 10px; flex: 1; }
+
+.card { background: white; border-radius: 14px; overflow: hidden; border: 1px solid #e5e5ea; }
+.card.approved { border-left: 4px solid #34c759; }
+.card.declined { opacity: 0.55; }
+
+.card-header { padding: 14px 16px 12px; cursor: pointer; user-select: none; }
+.card-top-row { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; }
+.card-num { width: 22px; height: 22px; border-radius: 50%; background: #f2f2f7; display: flex; align-items: center; justify-content: center; font-size: 11px; color: #6e6e73; font-weight: 600; flex-shrink: 0; }
+.card-year { font-size: 12px; color: #8e8e93; }
+.card-badge { font-size: 11px; font-weight: 500; padding: 2px 8px; border-radius: 20px; }
+.badge-pending { background: #f2f2f7; color: #6e6e73; }
+.badge-approved { background: #d4edda; color: #1a7a1a; }
+.badge-declined { background: #fde8e8; color: #c00; }
+.card-chevron { margin-left: auto; color: #c7c7cc; font-size: 20px; transition: transform 0.2s ease; line-height: 1; }
+.card.open .card-chevron { transform: rotate(90deg); }
+
+.card-title { font-size: 14px; font-weight: 600; line-height: 1.45; color: #1c1c1e; }
+.card-authors { font-size: 12px; color: #8e8e93; margin-top: 4px; }
+
+/* Expanded details */
+.card-details { display: none; padding: 14px 16px; border-top: 1px solid #f2f2f7; }
+.card.open .card-details { display: block; }
+.detail-block { margin-bottom: 14px; }
+.detail-block:last-child { margin-bottom: 0; }
+.detail-label { font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; color: #8e8e93; margin-bottom: 5px; }
+.detail-text { font-size: 13px; line-height: 1.6; color: #3a3a3c; }
+.pubmed-link { display: inline-flex; align-items: center; gap: 4px; margin-top: 12px; font-size: 13px; color: #007aff; text-decoration: none; font-weight: 500; }
+
+/* Actions */
+.card-actions { display: flex; gap: 8px; padding: 10px 14px 14px; }
+.action-btn { flex: 1; padding: 11px 8px; border-radius: 10px; font-size: 14px; font-weight: 600; border: none; cursor: pointer; transition: transform 0.1s, opacity 0.1s; }
+.action-btn:active { transform: scale(0.97); opacity: 0.85; }
+.btn-approve { background: #d4edda; color: #1a7a1a; }
+.btn-decline { background: #f2f2f7; color: #6e6e73; }
+.btn-undo { background: #f2f2f7; color: #6e6e73; font-size: 13px; }
+.action-btn:disabled { opacity: 0.4; pointer-events: none; }
+
+/* Save indicator */
+.save-toast { position: fixed; bottom: 24px; left: 50%; transform: translateX(-50%); background: #1c1c1e; color: white; padding: 10px 20px; border-radius: 20px; font-size: 13px; font-weight: 500; opacity: 0; transition: opacity 0.2s; pointer-events: none; z-index: 999; white-space: nowrap; }
+.save-toast.visible { opacity: 1; }
+
+/* States */
+.state-msg { text-align: center; padding: 4rem 2rem; color: #8e8e93; font-size: 15px; line-height: 1.5; }
+.state-msg .icon { font-size: 36px; margin-bottom: 12px; }
+
+/* Dark mode */
+@media (prefers-color-scheme: dark) {
+  body { background: #000; color: #fff; }
+  .header { background: #1c1c1e; border-color: #2c2c2e; }
+  .header-title { color: #fff; }
+  .card { background: #1c1c1e; border-color: #2c2c2e; }
+  .card.declined { opacity: 0.4; }
+  .card-title { color: #fff; }
+  .card-num, .chip-pending, .card-badge.badge-pending { background: #2c2c2e; }
+  .card-details { border-color: #2c2c2e; }
+  .detail-text { color: #ebebf5; }
+  .btn-decline, .btn-undo, .btn-primary { }
+  .btn-decline, .btn-undo { background: #2c2c2e; color: #aeaeb2; }
+  .filter-btn { color: #8e8e93; }
+  .filter-btn.active { color: #0a84ff; border-bottom-color: #0a84ff; }
+  .pubmed-link { color: #0a84ff; }
+  .setup-card { background: #1c1c1e; }
+  .setup h1 { color: #fff; }
+  .setup input { background: #2c2c2e; border-color: #3a3a3c; color: #fff; }
+  .setup-link { color: #0a84ff; }
+  .btn-approve { background: #1a3d1a; color: #4cd964; }
+  .btn-decline { background: #2c2c2e; color: #8e8e93; }
+  .chip-approved { background: #1a3d1a; color: #4cd964; }
+  .chip-declined { background: #3d1a1a; color: #ff6b6b; }
+}
+
+.hidden { display: none !important; }
+</style>
+</head>
+<body>
+
+<!-- First-run setup -->
+<div id="setup-screen" class="setup hidden">
+  <div class="setup-card">
+    <div style="text-align:center;font-size:36px">🫀</div>
+    <h1>HRV Research</h1>
+    <p>Enter a GitHub Personal Access Token to load your study queue. Your token is stored only on this device.</p>
+    <input type="password" id="token-input" placeholder="ghp_xxxxxxxxxxxx" autocomplete="off" spellcheck="false">
+    <button class="btn-primary" onclick="saveToken()">Connect</button>
+    <a class="setup-link" href="https://github.com/settings/personal-access-tokens/new" target="_blank">Create a token on GitHub →</a>
+    <p class="setup-note">Needs "Contents: Read & write" permission on the hrv-research-dashboard repo</p>
+  </div>
+</div>
+
+<!-- Main app -->
+<div id="app" class="hidden">
+  <div class="header">
+    <div class="header-top">
+      <div class="header-title">Study Review</div>
+      <div class="header-stats">
+        <span class="chip chip-pending" id="stat-pending">—</span>
+        <span class="chip chip-approved" id="stat-approved">—</span>
+      </div>
+    </div>
+    <div class="filters">
+      <button class="filter-btn active" onclick="setFilter('all',this)">All</button>
+      <button class="filter-btn" onclick="setFilter('pending',this)">Pending</button>
+      <button class="filter-btn" onclick="setFilter('approved',this)">Approved</button>
+      <button class="filter-btn" onclick="setFilter('declined',this)">Declined</button>
+    </div>
+  </div>
+  <div class="cards" id="cards-container"></div>
+</div>
+
+<div class="save-toast" id="toast"></div>
+
+<script>
+const REPO = 'ffredling/hrv-research-dashboard';
+const FILE = 'studies.json';
+let studies = [], sha = '', filter = 'all';
+
+function getToken() { return localStorage.getItem('hrv_gh_token'); }
+
+function saveToken() {
+  const t = document.getElementById('token-input').value.trim();
+  if (!t) return;
+  localStorage.setItem('hrv_gh_token', t);
+  init();
+}
+
+async function init() {
+  if (!getToken()) {
+    document.getElementById('setup-screen').classList.remove('hidden');
+    document.getElementById('app').classList.add('hidden');
+    return;
+  }
+  document.getElementById('setup-screen').classList.add('hidden');
+  document.getElementById('app').classList.remove('hidden');
+  await load();
+}
+
+async function load() {
+  showState('loading', 'Loading studies...');
+  try {
+    const res = await fetch(`https://api.github.com/repos/${REPO}/contents/${FILE}`, {
+      headers: { Authorization: `token ${getToken()}`, Accept: 'application/vnd.github.v3+json' }
+    });
+    if (res.status === 401) { localStorage.removeItem('hrv_gh_token'); init(); return; }
+    if (res.status === 404) { showState('empty', 'No studies yet.'); return; }
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    const data = await res.json();
+    sha = data.sha;
+    const parsed = JSON.parse(atob(data.content.replace(/\n/g,'')));
+    studies = parsed.studies || [];
+    render();
+  } catch(e) {
+    showState('error', 'Failed to load: ' + e.message);
+  }
+}
+
+async function decide(id, status) {
+  const idx = studies.findIndex(s => s.id === id);
+  if (idx === -1) return;
+  document.querySelectorAll(`[data-id="${id}"]`).forEach(b => b.disabled = true);
+  studies[idx].status = status;
+  showToast('Saving...');
+  try {
+    const payload = { lastUpdated: new Date().toISOString(), studies };
+    const content = btoa(unescape(encodeURIComponent(JSON.stringify(payload, null, 2))));
+    const res = await fetch(`https://api.github.com/repos/${REPO}/contents/${FILE}`, {
+      method: 'PUT',
+      headers: { Authorization: `token ${getToken()}`, 'Content-Type': 'application/json' },
+      body: JSON.stringify({ message: `${status === 'approved' ? 'Approve' : status === 'declined' ? 'Decline' : 'Update'} PMID ${id}`, content, sha })
+    });
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    const saved = await res.json();
+    sha = saved.content.sha;
+    showToast('Saved');
+  } catch(e) {
+    studies[idx].status = status === 'pending' ? 'pending' : 'pending';
+    showToast('Error — try again');
+  }
+  render();
+}
+
+function setFilter(f, btn) {
+  filter = f;
+  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  render();
+}
+
+function render() {
+  const pending = studies.filter(s => s.status === 'pending').length;
+  const approved = studies.filter(s => s.status === 'approved').length;
+  const declined = studies.filter(s => s.status === 'declined').length;
+  document.getElementById('stat-pending').textContent = pending + ' pending';
+  document.getElementById('stat-approved').textContent = approved + ' approved';
+
+  const visible = filter === 'all' ? studies : studies.filter(s => s.status === filter);
+  const container = document.getElementById('cards-container');
+
+  if (visible.length === 0) {
+    container.innerHTML = `<div class="state-msg"><div class="icon">📭</div>No ${filter === 'all' ? '' : filter + ' '}studies</div>`;
+    return;
+  }
+
+  container.innerHTML = visible.map(s => {
+    const num = studies.indexOf(s) + 1;
+    const badgeClass = s.status === 'approved' ? 'badge-approved' : s.status === 'declined' ? 'badge-declined' : 'badge-pending';
+    return `
+<div class="card ${s.status}" id="card-${s.id}">
+  <div class="card-header" onclick="toggle('${s.id}')">
+    <div class="card-top-row">
+      <div class="card-num">${num}</div>
+      <span class="card-year">${s.year}</span>
+      <span class="card-badge ${badgeClass}">${s.status}</span>
+      <span class="card-chevron">›</span>
+    </div>
+    <div class="card-title">${s.title}</div>
+    <div class="card-authors">${s.authors}</div>
+  </div>
+  <div class="card-details">
+    <div class="detail-block">
+      <div class="detail-label">Why it matters</div>
+      <div class="detail-text">${s.pitch}</div>
+    </div>
+    <div class="detail-block">
+      <div class="detail-label">Study quality</div>
+      <div class="detail-text">${s.quality}</div>
+    </div>
+    <a href="${s.pubmedUrl}" target="_blank" class="pubmed-link">Open on PubMed →</a>
+  </div>
+  <div class="card-actions">
+    ${s.status === 'pending'
+      ? `<button class="action-btn btn-approve" data-id="${s.id}" onclick="decide('${s.id}','approved')">Approve</button>
+         <button class="action-btn btn-decline" data-id="${s.id}" onclick="decide('${s.id}','declined')">Decline</button>`
+      : `<button class="action-btn btn-undo" data-id="${s.id}" onclick="decide('${s.id}','pending')">Undo</button>`
+    }
+  </div>
+</div>`;
+  }).join('');
+}
+
+function toggle(id) {
+  document.getElementById('card-' + id).classList.toggle('open');
+}
+
+function showState(type, msg) {
+  document.getElementById('cards-container').innerHTML =
+    `<div class="state-msg"><div class="icon">${type === 'loading' ? '⏳' : type === 'error' ? '⚠️' : '📭'}</div>${msg}</div>`;
+}
+
+let toastTimer;
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('visible');
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => t.classList.remove('visible'), 2000);
+}
+
+init();
+</script>
+</body>
+</html>
