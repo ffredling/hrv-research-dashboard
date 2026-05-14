@@ -1,13 +1,13 @@
 {
-  "lastUpdated": "2026-05-14T21:05:45.840Z",
+  "lastUpdated": "2026-05-14T21:09:32.866Z",
   "studies": [
     {
       "id": "35853460",
       "title": "Practices and Applications of Heart Rate Variability Monitoring in Endurance Athletes",
       "authors": "Lundstrom et al.",
       "year": "2022",
-      "status": "pending",
-      "pitch": "A comprehensive field manual for endurance athletes using HRV â covering what measurement conditions matter, how lifestyle factors like sleep and alcohol affect readings, and how to identify overtraining signals. Addresses how age affects HRV baselines, directly relevant to interpreting Garmin data over time. The most practical orientation paper available for an amateur athlete building an HRV knowledge base.",
+      "status": "approved",
+      "pitch": "A comprehensive field manual for endurance athletes using HRV Ã¢ÂÂ covering what measurement conditions matter, how lifestyle factors like sleep and alcohol affect readings, and how to identify overtraining signals. Addresses how age affects HRV baselines, directly relevant to interpreting Garmin data over time. The most practical orientation paper available for an amateur athlete building an HRV knowledge base.",
       "quality": "Narrative review in International Journal of Sports Medicine by three University of Minnesota kinesiology researchers. Synthesizes recent literature with explicit practical application focus.",
       "pubmedUrl": "https://pubmed.ncbi.nlm.nih.gov/35853460/"
     },
@@ -17,7 +17,7 @@
       "authors": "Bellenger et al.",
       "year": "2016",
       "status": "pending",
-      "pitch": "Directly answers whether a given HRV reading signals good adaptation or the start of overreaching. Pooled 27 studies and quantified how RMSSD changes in response to both positive training adaptation and overreaching. The critical finding â post-exercise HRV can rise in both scenarios â is something every athlete reading a wearable needs to understand before drawing conclusions.",
+      "pitch": "Directly answers whether a given HRV reading signals good adaptation or the start of overreaching. Pooled 27 studies and quantified how RMSSD changes in response to both positive training adaptation and overreaching. The critical finding Ã¢ÂÂ post-exercise HRV can rise in both scenarios Ã¢ÂÂ is something every athlete reading a wearable needs to understand before drawing conclusions.",
       "quality": "Systematic review and meta-analysis in Sports Medicine. 27 studies included, six-database search, standardized effect size reporting. One of the most cited papers in HRV monitoring literature.",
       "pubmedUrl": "https://pubmed.ncbi.nlm.nih.gov/26888648/"
     },
@@ -27,7 +27,7 @@
       "authors": "Plews et al.",
       "year": "2013",
       "status": "pending",
-      "pitch": "The foundational paper that introduced daily HRV monitoring with rolling averages â the methodology now baked into HRV4Training and approximated by Garmin. Explains why a single reading is unreliable, why 7-day rolling averages matter, and how to distinguish fitness gain signals from freshness loss signals. Essential for understanding what your Garmin's HRV trend line is actually representing.",
+      "pitch": "The foundational paper that introduced daily HRV monitoring with rolling averages Ã¢ÂÂ the methodology now baked into HRV4Training and approximated by Garmin. Explains why a single reading is unreliable, why 7-day rolling averages matter, and how to distinguish fitness gain signals from freshness loss signals. Essential for understanding what your Garmin's HRV trend line is actually representing.",
       "quality": "Review in Sports Medicine by Plews and Buchheit, two of the most cited names in applied HRV research. Includes Olympic and World Champion case studies. Cited hundreds of times, considered foundational in the field.",
       "pubmedUrl": "https://pubmed.ncbi.nlm.nih.gov/23852425/"
     },
@@ -37,7 +37,7 @@
       "authors": "Aubert et al.",
       "year": "2003",
       "status": "pending",
-      "pitch": "The bedrock physiology paper â explains what HRV actually is before you can intelligently interpret your numbers. Covers how sympathetic and parasympathetic branches of the autonomic nervous system drive HRV, what RMSSD, SDNN, LF and HF power actually measure, and how training status affects each metric. Without this framework you're reading numbers without a model.",
+      "pitch": "The bedrock physiology paper Ã¢ÂÂ explains what HRV actually is before you can intelligently interpret your numbers. Covers how sympathetic and parasympathetic branches of the autonomic nervous system drive HRV, what RMSSD, SDNN, LF and HF power actually measure, and how training status affects each metric. Without this framework you're reading numbers without a model.",
       "quality": "Landmark 30-page review in Sports Medicine. One of the most referenced HRV papers in sports science. The methodology section is essential reading for anyone relying on wearable HRV data.",
       "pubmedUrl": "https://pubmed.ncbi.nlm.nih.gov/12974657/"
     },
@@ -67,7 +67,7 @@
       "authors": "Granero-Gallegos et al.",
       "year": "2020",
       "status": "pending",
-      "pitch": "Contains the key finding that HRV-guided training produces the greatest VO2max improvements in amateur-level athletes â not elites. As someone training around 10 hours per week, you sit in the group that benefits most from HRV-guided training, giving a data-backed reason to prioritize HRV monitoring rather than treating it as an elite-only tool.",
+      "pitch": "Contains the key finding that HRV-guided training produces the greatest VO2max improvements in amateur-level athletes Ã¢ÂÂ not elites. As someone training around 10 hours per week, you sit in the group that benefits most from HRV-guided training, giving a data-backed reason to prioritize HRV monitoring rather than treating it as an elite-only tool.",
       "quality": "Systematic review with meta-analysis, open access. Eight databases searched, random-effects model, moderator analyses by athlete level and sex.",
       "pubmedUrl": "https://pubmed.ncbi.nlm.nih.gov/33143175/"
     },
@@ -87,8 +87,8 @@
       "authors": "Bellenger et al.",
       "year": "2021",
       "status": "pending",
-      "pitch": "Surfaces a counterintuitive pattern that is critical to understand: when runners are functionally overreached, their post-exercise RMSSD increases rather than decreases â the same direction as positive adaptation. Without knowing this, a paradoxical RMSSD rise could be misread as a green light for more training when it's actually a warning. Shows why HRV data alone is insufficient without a subjective readiness layer.",
-      "quality": "Open access in Frontiers in Physiology. 11 male runners across a controlled light â heavy â taper cycle with performance testing at each stage. Same research group as the 2016 meta-analysis.",
+      "pitch": "Surfaces a counterintuitive pattern that is critical to understand: when runners are functionally overreached, their post-exercise RMSSD increases rather than decreases Ã¢ÂÂ the same direction as positive adaptation. Without knowing this, a paradoxical RMSSD rise could be misread as a green light for more training when it's actually a warning. Shows why HRV data alone is insufficient without a subjective readiness layer.",
+      "quality": "Open access in Frontiers in Physiology. 11 male runners across a controlled light Ã¢ÂÂ heavy Ã¢ÂÂ taper cycle with performance testing at each stage. Same research group as the 2016 meta-analysis.",
       "pubmedUrl": "https://pubmed.ncbi.nlm.nih.gov/33488402/"
     },
     {
@@ -97,7 +97,7 @@
       "authors": "Figueiredo et al.",
       "year": "2023",
       "status": "pending",
-      "pitch": "The most recent RCT in this set, comparing HRV-guided training, subjective stress monitoring, and predefined training head-to-head. The HRV group outperformed both others on 5km time trial and peak velocity. Validates using Garmin HRV data while also showing that subjective fatigue ratings capture real physiological signal â both are worth tracking together.",
+      "pitch": "The most recent RCT in this set, comparing HRV-guided training, subjective stress monitoring, and predefined training head-to-head. The HRV group outperformed both others on 5km time trial and peak velocity. Validates using Garmin HRV data while also showing that subjective fatigue ratings capture real physiological signal Ã¢ÂÂ both are worth tracking together.",
       "quality": "RCT in Journal of Sports Sciences. 36 recreational male runners across three groups, 5-week intervention with pre/post performance testing.",
       "pubmedUrl": "https://pubmed.ncbi.nlm.nih.gov/36940300/"
     }
